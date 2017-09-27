@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      My Products
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only solid (click)="addNewProduct()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding id="page1">
+  <ion-card id="myProducts-card21"(click)="productDetails()">
+    <ion-list>
+      <ion-item color="none" id="myProducts-list-item6">
+        Product
+        <ion-note item-right>$000.00</ion-note>
+      </ion-item>
+      <ion-item id="myProducts-list-item-container2">
+        <div id="myProducts-markdown2" class="show-list-numbers-and-dots">
+          <p style="margin-top:0px;color:#000000;">
+            Lowest Price: $000.00
+          </p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card id="myProducts-card21">
+      <ion-list>
+        <ion-item color="none" id="myProducts-list-item6">
+          Product
+          <ion-note item-right>$000.00</ion-note>
+        </ion-item>
+        <ion-item id="myProducts-list-item-container2">
+          <div id="myProducts-markdown2" class="show-list-numbers-and-dots">
+            <p style="margin-top:0px;color:#000000;">
+              Lowest Price: $000.00
+            </p>
+          </div>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+</ion-content>
