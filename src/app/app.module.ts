@@ -13,6 +13,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 import { GooglePlus } from '@ionic-native/google-plus'
 import { AngularFireModule } from 'angularfire2'
 import firebase  from 'firebase'
+import { AngularFireDatabaseModule } from 'angularfire2/database'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,7 +41,8 @@ firebase.initializeApp(firebaseConfig)
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

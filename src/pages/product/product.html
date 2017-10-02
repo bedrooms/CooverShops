@@ -18,43 +18,28 @@
         <ion-label color="primary" floating>
           Product Barcode
         </ion-label>
-        <ion-input type="text" [(ngModel)]="results.text"  placeholder="" name="productName"></ion-input>
+        <ion-input type="text" [(ngModel)]="results.text"  placeholder="" name="barcode"></ion-input>
       </ion-item>
       <ion-item id="product-input2">
         <ion-label color="primary" floating>
           Product Name
         </ion-label>
-        <ion-input type="text" placeholder="" name="productName"></ion-input>
+        <ion-input type="text" [(ngModel)]="productGlobal.productName" placeholder="" name="productName"></ion-input>
       </ion-item>
       <ion-item id="product-input3">
         <ion-label color="primary" floating>
           Price
         </ion-label>
-        <ion-input type="number" placeholder="" name="productPrice"></ion-input>
+        <ion-input type="number" [(ngModel)]="productGlobal.price" placeholder="" name="productPrice"></ion-input>
       </ion-item>
       <ion-item id="product-select1">
         <ion-label color="primary" floating>
           Store
         </ion-label>
-        <ion-select name="productStore">
-          <ion-option>
-            Exito
-          </ion-option>
-          <ion-option>
-            Jumbo
-          </ion-option>
-          <ion-option>
-            Metro
-          </ion-option>
-          <ion-option>
-            Alkosto
-          </ion-option>
-          <ion-option>
-            Pricesmart
-          </ion-option>
-          <ion-option>
-            D1
-          </ion-option>
+        <ion-select name="productStoreList" interface="action-sheet" [(ngModel)]="productGlobal.storeId">
+            <ion-option value={{item.storeId}} *ngFor="let item of stores">
+                {{item.storeName}}
+              </ion-option>        
         </ion-select>
       </ion-item>
       <ion-item id="product-toggle2">
@@ -63,7 +48,7 @@
         </ion-label>
         <ion-toggle color="positive" checked="true"></ion-toggle>
       </ion-item>
-      <button id="product-button1" ion-button color="positive" block>
+      <button (click)="saveProduct()" id="product-button1" ion-button color="positive" block>
           Save
         </button>
   </form>
