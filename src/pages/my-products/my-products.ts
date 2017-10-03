@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProductPage } from "../product/product"
+import { AngularFireDatabase } from 'angularfire2/database'
  
 @Component({
   selector: 'page-my-products',
@@ -8,7 +9,16 @@ import { ProductPage } from "../product/product"
 })
 export class MyProductsPage {
 
-  constructor(public navCtrl: NavController) {
+  productsListData:{};
+
+  constructor(private dbf: AngularFireDatabase, public navCtrl: NavController) {
+
+    this.dbf.list("/products/product/").subscribe(_data => {
+      this.productsListData = _data;
+      console.log(_data);
+      
+    });
+
   }
 
   addNewProduct(){
@@ -17,9 +27,10 @@ export class MyProductsPage {
     });
   }
 
-  productDetails(){
+  productDetails(barcode){
     this.navCtrl.push(ProductPage,{
-      isNewProduct:false
+      isNewProduct:false,
+      barcodeDetail:barcode
     });
     
   }
