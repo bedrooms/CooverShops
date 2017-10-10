@@ -4,6 +4,8 @@ import { GooglePlus } from '@ionic-native/google-plus'
 import { AngularFireModule } from 'angularfire2'
 import firebase  from 'firebase'
 import { MyProductsPage } from '../my-products/my-products';
+import { userInfo } from '../../app/global';
+import { ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,13 +17,13 @@ import { MyProductsPage } from '../my-products/my-products';
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
+  templateUrl: 'login.html'
 })
 export class LoginPage {
 
   userInfo = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public googleplus:GooglePlus) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public toastCtrl: ToastController, public googleplus:GooglePlus) {
   }
 
   login(){
@@ -30,12 +32,23 @@ export class LoginPage {
       'offline':true
     }).then(res=>{
       firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken)).then(suc=>{
-        this.userInfo = {name: res.displayName, email: res.email, profileImage: res.imageUrl};
-        alert("LOGIN SUCCESS")
-        alert(JSON.stringify(res));
+        try{
+        this.userInfo = {name: res.displayName, email: res.email, profileImage: res.imageUrl, userId: res.userId};
+        // alert(JSON.stringify(this.userInfo));
+        // alert(res.userId);
+        userInfo.userId = res.userId;
+        userInfo.userMail = res.email;
+        userInfo.userName = res.displayName;
+        userInfo.userImage = res.imageUrl;
+        this.presentToast("LOGIN SUCCESS");
         this.navCtrl.setRoot(MyProductsPage);
+      }
+      catch(error){
+        alert("error authentication")
+        alert(JSON.stringify(error));
+      }
       }).catch(ns=>{
-        alert("NOT LOGGED")
+        this.presentToast("NOT LOGGED")
         alert(JSON.stringify(ns));
       })
     })
@@ -43,6 +56,24 @@ export class LoginPage {
 
   mockLogin(){
     this.navCtrl.setRoot(MyProductsPage);
+    userInfo.userId = "115503332272420770807";
+    userInfo.userName = "Mock Log In";
+    userInfo.userImage = "https://lh4.googleusercontent.com/-G2fApxVoov0/AAAAAAAAAAI/AAAAAAAAACg/sQgOUzEdkeM/s96-c/photo.jpg";
+    this.presentToast("LOGGED")
+  }
+
+  presentToast(_message) {
+    const toast = this.toastCtrl.create({
+      message: _message,
+      duration: 5000,
+      position: 'bottom'
+    });
+
+    toast.onDidDismiss(() => {
+      //console.log('Dismissed toast');
+    });
+
+    toast.present();
   }
 
 }

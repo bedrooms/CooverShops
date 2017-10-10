@@ -8,6 +8,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { ProductPage } from '../pages/product/product';
 import { LoginPage } from '../pages/login/login';
 import { NewAccountPage } from '../pages/new-account/new-account';
+import { ProductsPage } from '../pages/products/products';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 import { GooglePlus } from '@ionic-native/google-plus'
@@ -36,7 +37,8 @@ firebase.initializeApp(firebaseConfig)
     SettingsPage,
     ProductPage,
     LoginPage,
-    NewAccountPage
+    NewAccountPage,
+    ProductsPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ firebase.initializeApp(firebaseConfig)
     SettingsPage,
     ProductPage,
     LoginPage,
-    NewAccountPage
+    NewAccountPage,
+    ProductsPage
   ],
   providers: [
     StatusBar,

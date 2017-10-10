@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { SettingsPage } from '../pages/settings/settings';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
+import { ProductsPage } from '../pages/products/products';
 
 import { MyProductsPage } from '../pages/my-products/my-products';
 import { LoginPage } from '../pages/login/login';
@@ -35,5 +36,8 @@ export class MyApp {
   }goToMyProfile(params){
     if (!params) params = {};
     this.navCtrl.setRoot(MyProfilePage);
+  }goToAllProducts(params){
+    if (!params) params = {};
+    this.navCtrl.setRoot(ProductsPage);
   }
 }

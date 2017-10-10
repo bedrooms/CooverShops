@@ -5,6 +5,7 @@ import firebase from 'firebase'
 import { AngularFireDatabase } from 'angularfire2/database'
 import { MyProductsPage } from '../my-products/my-products';
 import { ToastController } from 'ionic-angular';
+import { userInfo } from '../../app/global';
 
 @Component({
   selector: 'page-product',
@@ -43,13 +44,18 @@ export class ProductPage {
 
   }
 
-
-  saveProduct() {
-    firebase.database().ref('/products/product/' + this.results.text).set({
-      "barcode": this.results.text,
+  saveProduct() {    
+    firebase.database().ref('/products/product/' + this.productGlobal.barcode).set({
+      "barcode": this.productGlobal.barcode,
       "productName": this.productGlobal.productName,
       "productPrice": this.productGlobal.price,
       "storeId": this.productGlobal.storeId
+    });
+
+    firebase.database().ref('/products/productByUser/' + userInfo.userId + "/" + this.productGlobal.barcode).set({
+      "barcode": this.productGlobal.barcode,      
+      "productPrice": this.productGlobal.price,
+      "user": userInfo.userId
     });
 
     this.presentToast("Product added!");

@@ -29,6 +29,7 @@
         "angularfire2": "^4.0.0-rc.2",
         "cordova-android": "^6.2.3",
         "cordova-browser": "^4.1.0",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
@@ -46,6 +47,7 @@
         "zone.js": "0.8.12"
     },
     "devDependencies": {
+        "@angular/cli": "^1.4.5",
         "@ionic/app-scripts": "2.1.4",
         "typescript": "2.3.4"
     },
@@ -65,7 +67,8 @@
         },
         "platforms": [
             "android",
-            "browser"
+            "browser",
+            "ios"
         ]
     }
 }
