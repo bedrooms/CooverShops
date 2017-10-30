@@ -19,6 +19,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+//import { Http } from '@angular/http';
+
 export const firebaseConfig={
   apiKey: "AIzaSyAO8G2lDlbO0Ji18EyPpRKoaO0T8Qgv374",
   authDomain: "barcode-5fc0a.firebaseapp.com",
@@ -28,6 +30,10 @@ export const firebaseConfig={
   messagingSenderId: "315821383437"
 }
 firebase.initializeApp(firebaseConfig)
+
+// export function createTranslateLoader(http: Http) {
+//   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+// }
 
 @NgModule({
   declarations: [
@@ -44,7 +50,14 @@ firebase.initializeApp(firebaseConfig)
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    // TranslateModule.forRoot({
+    //   loader: {
+    //     provide: TranslateLoader,
+    //     useFactory: (createTranslateLoader),
+    //     deps: [Http]
+    //   }
+    // })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

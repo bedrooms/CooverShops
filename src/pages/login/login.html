@@ -3,11 +3,11 @@
 
   <div padding style="position: absolute; bottom: 50px; width: 100%">
     <div style="text-align: center">
-        <button id="login-facebook" ion-button color="default" block icon-left>
+        <button id="login-facebook" ion-button color="facebook" block icon-left (click)="mockLogin()">
             <ion-icon name="logo-facebook"></ion-icon>
             Login With Facebook
           </button>
-          <button id="login-google" ion-button color="danger" block icon-left (click)="mockLogin()">
+          <button id="login-google" ion-button color="danger" block icon-left (click)="login()">
             <ion-icon name="logo-google"></ion-icon>
             Login With Google
           </button>

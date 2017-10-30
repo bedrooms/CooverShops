@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header color="primary">
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page1">
-  <ion-card id="{{productItem.barcode}}" *ngFor="let productItem of productsListData" (click)="productDetails(productItem.barcode)">
+  <!-- <ion-card id="{{productItem.barcode}}" *ngFor="let productItem of productsListData" (click)="productDetails(productItem.barcode)">
     <ion-list>
       <ion-item color="none" >
       {{productItem.productName}}
@@ -23,5 +23,15 @@
         </div>
       </ion-item>
     </ion-list>
-  </ion-card>  
+  </ion-card>   -->
+  <ion-list>
+    <ion-item id="{{productItem.barcode}}" *ngFor="let productItem of productsListData">
+      <ion-thumbnail item-start>
+        <img src="assets/img/noproductsfound.jpg">
+      </ion-thumbnail>
+      <h3>{{productItem.productName}}</h3>
+      <h4 style="font-size:11px;">${{productItem.productPrice}}</h4>
+      <button ion-button clear item-end (click)="productDetails(productItem.barcode)">View</button>
+    </ion-item>
+  </ion-list>
 </ion-content>

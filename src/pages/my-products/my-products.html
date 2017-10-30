@@ -9,21 +9,36 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page1">
-  <ion-card id="{{productItem.barcode}}" *ngFor="let productItem of productsListData" (click)="productDetails(productItem.barcode)">
+  <!-- <ion-card id="{{productItem.barcode}}" *ngFor="let productItem of productsListData" (click)="productDetails(productItem.barcode)">
     <ion-list>
       <ion-item color="none" >
       {{productItem.productName}}
-        <ion-note style="color:#494949;" item-right>${{productItem.productPrice}}</ion-note>
+        <ion-note style="color:#494949;" item-right>${{productItem.user_ProductPrice}}</ion-note>
       </ion-item>
       <ion-item *ngIf="productItem.lowest">
         <div class="show-list-numbers-and-dots">
           <p style="margin-top:0px;color:#000000;">
-            Lowest Price: ${{productItem.user_ProductPrice}}
+            Lowest Price: ${{productItem.productPrice}}
           </p>
         </div>
       </ion-item>
     </ion-list>
-  </ion-card>
+  </ion-card> -->
+  <ion-list>
+    <ion-item id="{{productItem.barcode}}" *ngFor="let productItem of productsListData">
+      <ion-thumbnail item-start>
+        <img src="assets/img/noproductsfound.jpg">
+      </ion-thumbnail>
+      <h3>{{productItem.productName}}</h3>
+      <h4 style="font-size:11px;">${{productItem.user_ProductPrice}}</h4>
+      <div class="show-list-numbers-and-dots" *ngIf="productItem.lowest">
+        <p style="margin-top:0px;color:#000000;font-size:10px;">
+          Lowest Price: ${{productItem.productPrice}}
+        </p>
+      </div>
+      <button ion-button clear item-end (click)="productDetails(productItem.barcode)">View</button>
+    </ion-item>
+  </ion-list>
   <ion-fab right bottom >
     <button color="secondary" ion-fab (click)="addNewProduct()"><ion-icon name="add"></ion-icon></button>   
   </ion-fab>
