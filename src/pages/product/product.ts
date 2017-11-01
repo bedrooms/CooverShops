@@ -26,6 +26,7 @@ export class ProductPage {
 
 
   constructor(private dbf: AngularFireDatabase, private toastCtrl: ToastController, private barcode: BarcodeScanner, public navCtrl: NavController, navParameters: NavParams) {
+    console.log('Contructor ProductsPage');
     this.isNewProduct = navParameters.get("isNewProduct");
     this.barcodeDetail = navParameters.get("barcodeDetail");
     this.showProductForm = !this.isNewProduct;
@@ -78,6 +79,7 @@ export class ProductPage {
 
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad ProductsPage');
     if (this.isNewProduct == true) {
       this.tittle = "Is New Product";
     }
