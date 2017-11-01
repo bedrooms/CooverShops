@@ -1,3 +1,44 @@
 {
-    "HELLO" : "Hello"
+    
+    "APP_TITLE":"Coover Shops",
+
+    
+    "MY_PRODUCTS" : "My Products",
+    "LOWEST_PRICE" : "Lowest Price",
+    "VIEW":"View",
+
+    "PRODUCT":"Product",
+    "SCAN_BARCODE":"",
+    "PRODUCT_BARCODE":"",
+    "PRODUCT_NAME":"",
+    "PRODUCT_PRICE":"",
+    "STORE":"",
+    "ADD_TO_MY_LIST":"",
+    "SAVE":"",
+    
+    "FACEBOOK_LOGIN":"",
+    "GOOGLEPLUS_LOGIN":"",
+    "CREATE_NEW_ACCOUNT":"",
+    "FORGOT_LOGIN":"",
+
+   
+    "HOME":"",
+
+    
+    "ALL_PRODUCTS":"",    
+    "ALL_PRODUCTS_VIEW":"View",
+
+    
+    "MY_PROFILE":"",
+    "USER_SINCE":"",
+    "NUMBER_OF_PRODUCTS":"",
+    "NUMBER_OF_PRODUCTS_ON_SHOP_LIST":"",
+    "LOG_OUT":"",
+
+   
+    "SETTINGS":"",
+    
+   
+    "BACK_BUTTON_TEXT":""
+
 }

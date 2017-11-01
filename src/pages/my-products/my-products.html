@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title >
-      My Products
+      {{ 'MY_PRODUCTS' | translate }} 
     </ion-title>   
   </ion-navbar>
 </ion-header>
@@ -33,10 +33,10 @@
       <h4 style="font-size:11px;">${{productItem.user_ProductPrice}}</h4>
       <div class="show-list-numbers-and-dots" *ngIf="productItem.lowest">
         <p style="margin-top:0px;color:#000000;font-size:10px;">
-          Lowest Price: ${{productItem.productPrice}}
+          {{ 'LOWEST_PRICE' | translate }}: ${{productItem.productPrice}}
         </p>
       </div>
-      <button ion-button clear item-end (click)="productDetails(productItem.barcode)">View</button>
+      <button ion-button clear item-end (click)="productDetails(productItem.barcode)">{{ 'VIEW' | translate }}</button>
     </ion-item>
   </ion-list>
   <ion-fab right bottom >

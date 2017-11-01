@@ -4,22 +4,10 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Settings
+      {{'SETTINGS' | translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page3">
-    <ion-list>
-        <ion-item id="{{productItem.barcode}}" *ngFor="let productItem of items">
-          <ion-thumbnail item-start>
-            <img src="assets/img/noproductsfound.jpg">
-          </ion-thumbnail>
-          <h3>{{productItem.productName}}</h3>
-          <h4 style="font-size:11px;">${{productItem.productPrice}}</h4>
-          <button ion-button clear item-end (click)="productDetails(productItem.barcode)">View</button>
-        </ion-item>
-      </ion-list>
-      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-        <ion-infinite-scroll-content></ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+
 </ion-content>

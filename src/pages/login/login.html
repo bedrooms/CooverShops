@@ -5,19 +5,19 @@
     <div style="text-align: center">
         <button id="login-facebook" ion-button color="facebook" block icon-left (click)="mockLogin()">
             <ion-icon name="logo-facebook"></ion-icon>
-            Login With Facebook
+            {{'FACEBOOK_LOGIN' | translate}}
           </button>
           <button id="login-google" ion-button color="danger" block icon-left (click)="login()">
             <ion-icon name="logo-google"></ion-icon>
-            Login With Google
+            {{'GOOGLEPLUS_LOGIN' | translate}}
           </button>
           <button id="login-newAccount" ion-button outline color="light" block on-click="goToNewAccount()">
-            Create Your Account
+            {{'CREATE_NEW_ACCOUNT' | translate}}
           </button>
           
           <div id="login-markdown7" style="text-align:center;" class="show-list-numbers-and-dots">
             <a href="">
-              Forgot Your Login?
+              {{'FORGOT_LOGIN' | translate}}
             </a>
           </div>
     </div>

@@ -4,53 +4,53 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Product
+      {{'PRODUCT' | translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page4">
   <button *ngIf="isNewProduct" id="product-button9" ion-button color="positive" block (click)="scanBarcode()">
-    Scan Product Barcode
+    {{'SCAN_BARCODE' | translate}}
   </button>
   <form id="product-form1" *ngIf="showProductForm">
-    <div class="spacer" style="width:300px;height:29px;" id="product-spacer4"></div>   
-      <ion-item id="product-input9">
-        <ion-label color="primary" floating>
-          Product Barcode
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="productGlobal.barcode"  placeholder="" name="barcode"></ion-input>
-      </ion-item>
-      <ion-item id="product-input2">
-        <ion-label color="primary" floating>
-          Product Name
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="productGlobal.productName" placeholder="" name="productName"></ion-input>
-      </ion-item>
-      <ion-item id="product-input3">
-        <ion-label color="primary" floating>
-          Price
-        </ion-label>
-        <ion-input type="number" [(ngModel)]="productGlobal.price" placeholder="" name="productPrice"></ion-input>
-      </ion-item>
-      <ion-item id="product-select1">
-        <ion-label color="primary" floating>
-          Store
-        </ion-label>
-        <ion-select name="productStoreList" interface="action-sheet" [(ngModel)]="productGlobal.storeId">
-            <ion-option value={{item.storeId}} *ngFor="let item of stores">
-                {{item.storeName}}
-              </ion-option>        
-        </ion-select>
-      </ion-item>
-      <ion-item id="product-toggle2">
-        <ion-label>
-          Add to My Shop List
-        </ion-label>
-        <ion-toggle color="positive" checked="true"></ion-toggle>
-      </ion-item>
-      <button (click)="saveProduct()" id="product-button1" ion-button color="positive" block>
-          Save
-        </button>
+    <div class="spacer" style="width:300px;height:29px;" id="product-spacer4"></div>
+    <ion-item id="product-input9">
+      <ion-label color="primary" floating>
+        {{'PRODUCT_BARCODE' | translate}}
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="productGlobal.barcode" placeholder="" name="barcode"></ion-input>
+    </ion-item>
+    <ion-item id="product-input2">
+      <ion-label color="primary" floating>
+        {{'PRODUCT_NAME' | translate}}
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="productGlobal.productName" placeholder="" name="productName"></ion-input>
+    </ion-item>
+    <ion-item id="product-input3">
+      <ion-label color="primary" floating>
+        {{'PRODUCT_PRICE' | translate}}
+      </ion-label>
+      <ion-input type="number" [(ngModel)]="productGlobal.price" placeholder="" name="productPrice"></ion-input>
+    </ion-item>
+    <ion-item id="product-select1">
+      <ion-label color="primary" floating>
+        {{'STORE' | translate}}
+      </ion-label>
+      <ion-select name="productStoreList" interface="action-sheet" [(ngModel)]="productGlobal.storeId">
+        <ion-option value={{item.storeId}} *ngFor="let item of stores">
+          {{item.storeName}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item id="product-toggle2">
+      <ion-label>
+        {{'ADD_TO_MY_LIST' | translate}}
+      </ion-label>
+      <ion-toggle color="positive" checked="true"></ion-toggle>
+    </ion-item>
+    <button (click)="saveProduct()" id="product-button1" ion-button color="positive" block>
+      {{'SAVE' | translate}}
+    </button>
   </form>
-  
+
 </ion-content>

@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      All Products
+      {{'ALL_PRODUCTS' | translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -32,7 +32,7 @@
       </ion-thumbnail>
       <h3>{{productItem.productName}}</h3>
       <h4 style="font-size:11px;">${{productItem.productPrice}}</h4>
-      <button ion-button clear item-end (click)="productDetails(productItem.barcode)">View</button>
+      <button ion-button clear item-end (click)="productDetails(productItem.barcode)">{{'ALL_PRODUCTS_VIEW' | translate}}</button>
     </ion-item>
   </ion-list>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

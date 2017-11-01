@@ -1,3 +1,42 @@
 {
-    "HELLO" : "Hola"
+    "APP_TITLE":"Coover Shops",
+
+
+    "MY_PRODUCTS" : "Mis Productos",
+    "LOWEST_PRICE" : "Precio mas bajo",
+    "VIEW":"Ver",
+
+    "PRODUCT":"Producto",
+    "SCAN_BARCODE":"Scanear Codigo",
+    "PRODUCT_BARCODE":"Codigo",
+    "PRODUCT_NAME":"Nombre",
+    "PRODUCT_PRICE":"Precio",
+    "STORE":"Tienda",
+    "ADD_TO_MY_LIST":"Agregar a mi lista",
+    "SAVE":"Guardar",
+    
+    "FACEBOOK_LOGIN":"Entra con Facebook",
+    "GOOGLEPLUS_LOGIN":"Entra con Google",
+    "CREATE_NEW_ACCOUNT":"Crea Una Nueva Cuenta",
+    "FORGOT_LOGIN":"Olvide mi Cuenta!",
+
+   
+    "HOME":"Inicio",
+
+    
+    "ALL_PRODUCTS":"Todos los Productos",
+    "ALL_PRODUCTS_VIEW":"Ver",
+
+    
+    "MY_PROFILE":"Mi Perfil",
+    "USER_SINCE":"Usuario desde",
+    "NUMBER_OF_PRODUCTS":"Numero de productos",
+    "NUMBER_OF_PRODUCTS_ON_SHOP_LIST":"Numero de productos en mi lista",
+    "LOG_OUT":"Cerrar Sesion!",
+
+   
+    "SETTINGS":"Configuración",
+
+    
+    "BACK_BUTTON_TEXT":"Volver"
 }
