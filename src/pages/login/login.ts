@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { IntroPage } from '../intro/intro';
 import { GooglePlus } from '@ionic-native/google-plus'
 import { AngularFireModule } from 'angularfire2'
 import firebase  from 'firebase'
@@ -23,7 +25,7 @@ export class LoginPage {
 
   userInfo = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public toastCtrl: ToastController, public googleplus:GooglePlus) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public toastCtrl: ToastController, public googleplus:GooglePlus, public storage: Storage) {
   }
 
   login(){
@@ -74,6 +76,15 @@ export class LoginPage {
     });
 
     toast.present();
+  }
+
+  ionViewDidLoad(){
+    this.storage.get('intro-done').then(done => {
+      if (!done) {
+        this.storage.set('intro-done', true);
+        this.navCtrl.setRoot(IntroPage);
+      }
+    });
   }
 
 }

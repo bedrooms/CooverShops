@@ -1,4 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Storage, StorageConfig, StorageConfigToken, IonicStorageModule } from '@ionic/storage';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -10,6 +11,7 @@ import { ProductPage } from '../pages/product/product';
 import { LoginPage } from '../pages/login/login';
 import { NewAccountPage } from '../pages/new-account/new-account';
 import { ProductsPage } from '../pages/products/products';
+import { IntroPage } from '../pages/intro/intro';
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 import { GooglePlus } from '@ionic-native/google-plus'
@@ -54,10 +56,12 @@ firebase.initializeApp(firebaseConfig)
     ProductPage,
     LoginPage,
     NewAccountPage,
-    ProductsPage
+    ProductsPage,
+    IntroPage
   ],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
@@ -86,7 +90,8 @@ firebase.initializeApp(firebaseConfig)
     ProductPage,
     LoginPage,
     NewAccountPage,
-    ProductsPage
+    ProductsPage,
+    IntroPage
   ],
   providers: [
     StatusBar,

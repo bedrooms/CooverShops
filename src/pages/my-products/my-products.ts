@@ -11,6 +11,8 @@ import firebase from 'firebase'
 })
 export class MyProductsPage {
 
+  
+
   productsListData:{};
   public productsListDataTest=[];
   userId;
@@ -46,6 +48,7 @@ export class MyProductsPage {
   ionViewDidEnter(){
   }
 
+ 
 
   addNewProduct(){
     this.navCtrl.push(ProductPage,{
