@@ -6,9 +6,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SettingsPage } from '../pages/settings/settings';
 import { MyProfilePage } from '../pages/my-profile/my-profile';
 import { ProductsPage } from '../pages/products/products';
-
 import { MyProductsPage } from '../pages/my-products/my-products';
 import { LoginPage } from '../pages/login/login';
+import { IntroPage } from '../pages/intro/intro';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -37,9 +37,9 @@ export class MyApp {
     this.translate.use('es'); // Set your language here
     
 
-    this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
-      this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
-    });
+    // this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
+    //   this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
+    // });
   }
   goToMyProducts(params){
     if (!params) params = {};

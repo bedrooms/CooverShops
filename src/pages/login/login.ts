@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { IntroPage } from '../intro/intro';
+
 import { GooglePlus } from '@ionic-native/google-plus'
 import { AngularFireModule } from 'angularfire2'
 import firebase  from 'firebase'
 import { MyProductsPage } from '../my-products/my-products';
+import { IntroPage } from '../intro/intro';
 import { userInfo } from '../../app/global';
 import { ToastController } from 'ionic-angular';
 
@@ -78,7 +79,7 @@ export class LoginPage {
     toast.present();
   }
 
-  ionViewDidLoad(){
+  ionViewDidLoad() {
     this.storage.get('intro-done').then(done => {
       if (!done) {
         this.storage.set('intro-done', true);

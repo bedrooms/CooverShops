@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 
@@ -16,15 +17,24 @@ import { LoginPage } from '../login/login';
 })
 export class IntroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
-  }
-
-  navHome() {
+  navLogin() {
     this.navCtrl.setRoot(LoginPage);
   }
+
+  // ionViewDidLoad(){
+  //   this.storage.get('intro-done').then(done => {
+  //     if (done) {       
+  //       this.navCtrl.setRoot(LoginPage);
+  //     }
+  //     if(!done){
+  //       this.storage.set('intro-done', true);
+  //     }
+  //   });
+
+  //   this.storage.clear();
+  // }
 
 }
