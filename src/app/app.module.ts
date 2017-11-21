@@ -21,6 +21,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -98,7 +99,8 @@ firebase.initializeApp(firebaseConfig)
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
-    GooglePlus
+    GooglePlus,
+    Camera
   ]
 })
 export class AppModule {}

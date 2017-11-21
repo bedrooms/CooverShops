@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database'
 import { MyProductsPage } from '../my-products/my-products';
 import { ToastController } from 'ionic-angular';
 import { userInfo } from '../../app/global';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @Component({
   selector: 'page-product',
@@ -22,10 +23,10 @@ export class ProductPage {
   arrData = [];
   public productGlobal: { barcode: string, productName: string, price: number, storeId: number };
   stores: {};
+  public base64Image;
 
 
-
-  constructor(private dbf: AngularFireDatabase, private toastCtrl: ToastController, private barcode: BarcodeScanner, public navCtrl: NavController, navParameters: NavParams) {
+  constructor(public camera: Camera, private dbf: AngularFireDatabase, private toastCtrl: ToastController, private barcode: BarcodeScanner, public navCtrl: NavController, navParameters: NavParams) {
     console.log('Contructor ProductsPage');
     this.isNewProduct = navParameters.get("isNewProduct");
     this.barcodeDetail = navParameters.get("barcodeDetail");
@@ -117,6 +118,82 @@ export class ProductPage {
         "storeId": productData.val().storeId
       }
     });
+  }
+
+  // takePicture(){
+  //   this.camera.getPicture({
+  //       destinationType: this.camera.DestinationType.DATA_URL,
+  //       targetWidth: 1000,
+  //       targetHeight: 1000
+  //   }).then((imageData) => {
+  //     // imageData is a base64 encoded string
+  //       this.base64Image = "data:image/jpeg;base64," + imageData;
+  //   }, (err) => {
+  //       console.log(err);
+  //   });
+  // }
+
+  takePicture()
+  {
+    const options: CameraOptions = {
+    quality: 100,
+    targetHeight: 400,
+    targetWidth: 400,
+    destinationType: this.camera.DestinationType.NATIVE_URI,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  }
+
+  this.camera.getPicture(options).then((imageData) => {
+    // imageData is either a base64 encoded string or a file URI
+    // If it's base64:
+    let base64Image = imageData;
+  
+    //this.base64Image = imageData
+    this.createThumbnail(base64Image);
+  
+    }, (err) => {
+      console.log("Error: ", err);
+    });
+  }
+
+  createThumbnail(bigImg: any) {
+    this.generateFromImageTN(bigImg, 200, 200, 0.5, data => {
+      this.base64Image = data;     
+    });
+  }
+
+  generateFromImageTN(img, MAX_WIDTH: number, MAX_HEIGHT: number, quality: number, callback) {
+    var canvas: any = document.createElement("canvas");
+    var image = new Image();
+    
+    image.onload = () => {
+      var width = image.width;
+      var height = image.height;
+ 
+      if (width > height) {
+        if (width > MAX_WIDTH) {
+          height *= MAX_WIDTH / width;
+          width = MAX_WIDTH;
+        }
+      } else {
+        if (height > MAX_HEIGHT) {
+          width *= MAX_HEIGHT / height;
+          height = MAX_HEIGHT;
+        }
+      }
+      canvas.width = width;
+      canvas.height = height;
+      var ctx = canvas.getContext("2d");
+ 
+      ctx.drawImage(image, 0, 0, width, height);
+ 
+      // IMPORTANT: 'jpeg' NOT 'jpg'
+      var dataUrl = canvas.toDataURL('image/jpeg', quality);
+ 
+      callback(dataUrl)
+    }
+    image.src = img;
   }
 
 }

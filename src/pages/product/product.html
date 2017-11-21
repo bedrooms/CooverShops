@@ -12,6 +12,13 @@
   <button *ngIf="isNewProduct" id="product-button9" ion-button color="positive" block (click)="scanBarcode()">
     {{'SCAN_BARCODE' | translate}}
   </button>
+  <ion-card>
+    <ion-card-content>   
+      <button (click)="takePicture()">Take a Picture</button>
+      Latest Picture:
+      <img [src]="base64Image" *ngIf="base64Image" />
+    </ion-card-content>
+  </ion-card>
   <form id="product-form1" *ngIf="showProductForm">
     <div class="spacer" style="width:300px;height:29px;" id="product-spacer4"></div>
     <ion-item id="product-input9">
