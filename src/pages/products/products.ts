@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database'
 import { ProductPage } from "../product/product"
-
-/**
- * Generated class for the ProductsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ProductsDataProvider } from '../../providers/products-data/products-data'
 
 @IonicPage()
 @Component({
@@ -23,15 +17,20 @@ export class ProductsPage {
   currentLength;
   currentItems: any = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dbf: AngularFireDatabase) {
-    this.dbf.list("/products/product/").subscribe(_data => {
-      this.items = _data;
-      console.log(_data)
-      for (let i = 0; i < 10; i++) {
-        this.productsListData.push(this.items[i]);
-      }
-      this.productsListBeforeSearchData = this.productsListData;
-    });
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dbf: AngularFireDatabase, private productDP: ProductsDataProvider) {
+    productDP.loadInitialProductData();
+    this.items = productDP.items;
+    this.productsListData = productDP.productsListData;
+    this.productsListBeforeSearchData = productDP.productsListBeforeSearchData;
+    
+    // this.dbf.list("/products/product/").subscribe(_data => {
+    //   this.items = _data;
+    //   console.log(_data)
+    //   for (let i = 0; i < 10; i++) {
+    //     this.productsListData.push(this.items[i]);
+    //   }
+    //   this.productsListBeforeSearchData = this.productsListData;
+    // });
   }
 
   ionViewDidLoad() {

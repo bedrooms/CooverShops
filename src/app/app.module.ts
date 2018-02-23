@@ -1,4 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Storage, StorageConfig, StorageConfigToken, IonicStorageModule } from '@ionic/storage';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,6 +26,7 @@ import { Camera } from '@ionic-native/camera';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ProductsDataProvider } from '../providers/products-data/products-data';
 
 //import { Http } from '@angular/http';
 
@@ -67,6 +69,7 @@ firebase.initializeApp(firebaseConfig)
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
+    HttpModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -100,7 +103,8 @@ firebase.initializeApp(firebaseConfig)
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BarcodeScanner,
     GooglePlus,
-    Camera
+    Camera,
+    ProductsDataProvider
   ]
 })
 export class AppModule {}

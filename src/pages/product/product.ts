@@ -7,6 +7,8 @@ import { MyProductsPage } from '../my-products/my-products';
 import { ToastController } from 'ionic-angular';
 import { userInfo } from '../../app/global';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { ProductsDataProvider } from '../../providers/products-data/products-data'
+import { Product } from '../../models/product'
 
 @Component({
   selector: 'page-product',
@@ -21,20 +23,27 @@ export class ProductPage {
   showProductForm;
   tittle;
   arrData = [];
-  public productGlobal: { barcode: string, productName: string, price: number, storeId: number };
+  productDetail: Product;
   stores: {};
   public base64Image;
 
 
-  constructor(public camera: Camera, private dbf: AngularFireDatabase, private toastCtrl: ToastController, private barcode: BarcodeScanner, public navCtrl: NavController, navParameters: NavParams) {
+  constructor(public camera: Camera, 
+              private dbf: AngularFireDatabase, 
+              private toastCtrl: ToastController, 
+              private barcode: BarcodeScanner, 
+              public navCtrl: NavController, 
+              navParameters: NavParams,
+              private productDP: ProductsDataProvider) {
     console.log('Contructor ProductsPage');
+    this.productDetail = new Product();
     this.isNewProduct = navParameters.get("isNewProduct");
     this.barcodeDetail = navParameters.get("barcodeDetail");
     this.showProductForm = !this.isNewProduct;
-    const preObject = document.getElementById('object');
-    this.dbf.list("/products/").subscribe(_data => {
-      this.arrData = _data;
-    });
+    // const preObject = document.getElementById('object');
+    // this.dbf.list("/products/").subscribe(_data => {
+    //   this.arrData = _data;
+    // });
 
     dbf.list('/stores/store').forEach(_dat => {
       this.stores = _dat;
@@ -47,34 +56,37 @@ export class ProductPage {
   }
 
   saveProduct() {    
-    firebase.database().ref('/products/product/' + this.productGlobal.barcode).set({
-      "barcode": this.productGlobal.barcode,
-      "productName": this.productGlobal.productName,
-      "productPrice": this.productGlobal.price,
-      "storeId": this.productGlobal.storeId
-    });
+    // firebase.database().ref('/products/product/' + this.productGlobal.barcode).set({
+    //   "barcode": this.productGlobal.barcode,
+    //   "productName": this.productGlobal.productName,
+    //   "productPrice": this.productGlobal.price,
+    //   "storeId": this.productGlobal.storeId
+    // });
 
-    firebase.database().ref('/products/productByUser/' + userInfo.userId + "/" + this.productGlobal.barcode).set({
-      "barcode": this.productGlobal.barcode,      
-      "productPrice": this.productGlobal.price,
-      "user": userInfo.userId
-    });
+    // firebase.database().ref('/products/productByUser/' + userInfo.userId + "/" + this.productGlobal.barcode).set({
+    //   "barcode": this.productGlobal.barcode,      
+    //   "productPrice": this.productGlobal.price,
+    //   "user": userInfo.userId
+    // });
 
-    this.presentToast("Product added!");
-    this.navCtrl.setRoot(MyProductsPage);
+    // this.presentToast("Product added!");
+    // this.navCtrl.setRoot(MyProductsPage);
   }
 
   loadProductDetail() {
 
-    var resultProductData = firebase.database().ref('/products/product/' + this.barcodeDetail).once('value').then(productData => {
-      console.log(productData.val());
-      this.productGlobal = {
-        "barcode": this.barcodeDetail,
-        "price": productData.val().productPrice,
-        "productName": productData.val().productName,
-        "storeId": productData.val().storeId
-      }
-    });
+    this.productDP.getProductById(this.barcodeDetail);
+    
+
+    // var resultProductData = firebase.database().ref('/products/product/' + this.barcodeDetail).once('value').then(productData => {
+    //   console.log(productData.val());
+    //   this.productGlobal = {
+    //     "barcode": this.barcodeDetail,
+    //     "price": productData.val().productPrice,
+    //     "productName": productData.val().productName,
+    //     "storeId": productData.val().storeId
+    //   }
+    // });
 
   }
 
@@ -101,23 +113,23 @@ export class ProductPage {
   }
 
   async scanBarcode() {
-    console.log(this.productGlobal);
-    this.options = {
-      showTorchButton: true
-    }
-    this.results = await this.barcode.scan(this.options);
-    this.showProductForm = true;
-    this.productGlobal = { "barcode": this.results.text, "price": 0.00, "productName": null, "storeId": 1 };
+    // console.log(this.productGlobal);
+    // this.options = {
+    //   showTorchButton: true
+    // }
+    // this.results = await this.barcode.scan(this.options);
+    // this.showProductForm = true;
+    // this.productGlobal = { "barcode": this.results.text, "price": 0.00, "productName": null, "storeId": 1 };
 
-    var resultProductData = firebase.database().ref('/products/product/' + this.results.text).once('value').then(productData => {
-      console.log(productData.val());
-      this.productGlobal = {
-        "barcode": this.results.text,
-        "price": productData.val().productPrice,
-        "productName": productData.val().productName,
-        "storeId": productData.val().storeId
-      }
-    });
+    // var resultProductData = firebase.database().ref('/products/product/' + this.results.text).once('value').then(productData => {
+    //   console.log(productData.val());
+    //   this.productGlobal = {
+    //     "barcode": this.results.text,
+    //     "price": productData.val().productPrice,
+    //     "productName": productData.val().productName,
+    //     "storeId": productData.val().storeId
+    //   }
+    // });
   }
 
   // takePicture(){
